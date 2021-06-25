@@ -8,6 +8,8 @@ import Usuario from './paginas/Teste/Usuario/index';
 import Login from './paginas/Teste/Login/index';
 
 
+
+
 function routes () {
     return (
         <BrowserRouter>
@@ -18,7 +20,6 @@ function routes () {
             <Route path="/ListaLivro" component={ListaLivro}/>
             <Route path="/Usuario" component={Usuario}/>
             <Route path="/Login" component={Login}/>
-            
         </Switch>
         </BrowserRouter>
     )
