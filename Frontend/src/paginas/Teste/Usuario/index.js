@@ -1,120 +1,140 @@
 import React, {useState} from 'react';
 import api from '../services/api';
-import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
+import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Link from '@material-ui/core/Link';
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
 
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="https://material-ui.com/">
+        Alugue um carro
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: 200,
-    },
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(3),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
   },
 }));
 
-export default function CadastroUsuario() {
+export default function SignUp() {
   const classes = useStyles();
 
-    const [Nome, setNome] = useState('');
-    const [Email, setEmail] = useState('');
-    const [Senha, setSenha] = useState('');
-    const [Telefone, setTelefone] = useState('');
+  return (
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <div className={classes.paper}>
+        <Avatar className={classes.avatar}>
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Sign up
+        </Typography>
 
-    async function handleCadastro(e) {
-        e.preventDefault();
-
-        const dados = {
-            Nome,
-            Email,
-            Senha,
-            Telefone,
-        };
-
-        try {
-            console.log(dados);
-            const response = await api.post('user', dados);
-            const id = response.data.id;
-            console.log(response.data);
-            alert("o id do Usuario é " + id);
-            // history.push('/');
-        } catch (error) {
-            alert("Erro ao cadastrar Usuario " + error.message);            
-        }
-    }
-
-    return (
-
-        <form onSubmit={handleCadastro}>
-          <div>
-            <TextField 
-            required id="standard" 
-            label="Nome" defaultValue=""
-            value={Nome}
-            onChange={e => setNome(e.target.value)}
-            />
-
-            <TextField 
-            required id="standard-required" 
-            label="Email" defaultValue=""
-            value={Email}
-            onChange={e => setEmail(e.target.value)}
-            /> 
-
-            <TextField 
-            required id="standard-required" 
-            label="Senha" defaultValue="" 
-            value={Senha}
-            onChange={e => setSenha(e.target.value)}
-            />
-
-            <TextField 
-            required id="standard-required" 
-            label="Telefone" defaultValue="" 
-            value={Telefone}
-            onChange={e => setTelefone(e.target.value)}
-            />
-
-            <Button variant="contained" type="submit" color="primary">
-                Cadastrar Usuario
-            </Button>
-
-          </div>
+        <form className={classes.form} noValidate>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <TextField
+                autoComplete="fname"
+                name="firstName"
+                variant="outlined"
+                required
+                fullWidth
+                id="firstName"
+                label="Nome completo"
+                autoFocus
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="telefone"
+                label="Telefone"
+                name="telefone"
+                autoComplete="telefone"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="email"
+                label="Email"
+                name="email"
+                autoComplete="email"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="password"
+                label="Senha"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <FormControlLabel
+                control={<Checkbox value="allowExtraEmails" color="primary" />}
+                label="I want to receive inspiration, marketing promotions and updates via email."
+              />
+            </Grid>
+          </Grid>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            Sign Up
+          </Button>
+          <Grid container justify="flex-end">
+            <Grid item>
+              <Link href="#" variant="body2">
+                Already have an account? Sign in
+              </Link>
+            </Grid>
+          </Grid>
         </form>
-      );
-        /*return (
-            <div>
-                <div>
-                    <h1>Cadastro de Usuário</h1>
-    
-                    <form onSubmit={handleCadastro}>
-                        <input 
-                            placeholder="Nome de usuário"
-                            value={Nome}
-                            onChange={e => setNome(e.target.value)}/> 
-    
-                        <input 
-                            placeholder="Email"
-                            value={Email}
-                            onChange={e => setEmail(e.target.value)}/> 
-    
-                        <input 
-                            placeholder="Senha"
-                            value={Senha}
-                            onChange={e => setSenha(e.target.value)}/> 
-    
-                        <input 
-                            placeholder="Telefone"
-                            value={Telefone}
-                            onChange={e => setTelefone(e.target.value)}/> 
-
-                        <button className="button" type="submit">Cadastrar Usuario</button>
-                    </form>
-        
-    
-                </div>
-            </div>
-    
-        );*/
-    }
+      </div>
+      <Box mt={5}>
+        <Copyright />
+      </Box>
+    </Container>
+  );
+}
