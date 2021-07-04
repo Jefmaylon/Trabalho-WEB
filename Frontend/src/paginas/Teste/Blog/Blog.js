@@ -23,16 +23,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const sections = [
-  { title: 'Technology', url: '#' },
-  { title: 'Design', url: '#' },
-  { title: 'Culture', url: '#' },
-  { title: 'Business', url: '#' },
-  { title: 'Politics', url: '#' },
-  { title: 'Opinion', url: '#' },
-  { title: 'Science', url: '#' },
-  { title: 'Health', url: '#' },
-  { title: 'Style', url: '#' },
-  { title: 'Travel', url: '#' },
+  { title: 'Carros', url: '/carros' },
+  { title: 'Sobre', url: '#' },
+  { title: 'FAQ', url: '#' },
+
 ];
 
 const mainFeaturedPost = {
@@ -51,7 +45,7 @@ const featuredPosts = [
     description:
       'Lamborghini Huracán EVO com tração traseira (RWD) Spyder recebeu o prêmio de “Melhor Conversível para 2021” da Robb Report, a prestigiosa revista americana de estilo de vida de luxo...',
     image: 'https://images.alphacoders.com/986/986063.jpg',
-    imageText: 'Image Text',
+    imageText: 'Lamborghini',
   },
   {
     title: 'Honda Civic Type R 2022: projeção antecipa design da nova geração',
@@ -59,7 +53,7 @@ const featuredPosts = [
     description:
       'Depois de apresentar as versões sedã e hatchback, a Honda se programa agora para lançar a nova geração do Civic na variante esportiva Type R. . O modelo já foi flagrado por diversas vezes rodando em testes...',
     image: 'https://cdn.motor1.com/images/mgl/ZobwZ/s1/next-gen-honda-civic-type-renderings.jpg',
-    imageText: 'Image Text',
+    imageText: 'Civic',
 
   },
 ];
@@ -67,9 +61,9 @@ const featuredPosts = [
 const posts = [post1, post2, post3];
 
 const sidebar = {
-  title: 'Sobre',
+  title: '',
   description:
-    'Desenvolvido com o intuito de proporcionar carros de aluguel em todo o sul do Brasil.',
+    'Trabalho React em Programação WEB',
    
   social: [
     { name: 'GitHub', icon: GitHubIcon },

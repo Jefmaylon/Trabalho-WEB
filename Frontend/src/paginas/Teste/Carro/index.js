@@ -8,7 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import teste from './teste.png';
+import image from './foto.png';
 import { createBrowserHistory } from 'history';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -17,8 +17,10 @@ import { styled } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Link from '@material-ui/core/Link';
 import { setConfiguration } from 'react-grid-system';
-
-
+import CssBaseline from '@material-ui/core/CssBaseline';
+import FeaturedPost from './FeaturedPost';
+import Header from './Header';
+import Footer from './Footer';
 
 setConfiguration({ maxScreenClass: 'xl' });
 
@@ -57,6 +59,13 @@ const useStyles = makeStyles({
       color: theme.palette.text.secondary,
     }));
 
+    const sections = [
+      { title: '', url: '' },
+      { title: '', url: '#' },
+      { title: '', url: '#' },
+    
+    ];
+
   function Carro() {
 
   const classes = useStyles();
@@ -68,44 +77,45 @@ const useStyles = makeStyles({
         });
     }, []);
 
-
-  return (
-
-    <div>
-         <Card  style={{ width: '11rem'}} >       
-      {
-        carros.map(carros => (
-          <CardActionArea>
-          <CardMedia
-            className={classes.media}
-            image={teste}
-            title="Contemplative Reptile"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-             {carros.marca} {carros.modelo}
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              Cor: {carros.cor} <br></br>Quantidade de lugares: {carros.qtdlugares} <br></br>Ano: {carros.ano}
-            </Typography>
-  
-          <CardActions>
-            <Button size="small" color="primary" href="/Login">
-              Alugar
-            </Button>
-            <Button size="small" color="primary" href="/teste.jpg">
-              Saiba mais
-            </Button>
-          </CardActions>
-          </CardContent>
-        </CardActionArea>
-        ))
-      }
-      <Copyright />
-        </Card> 
-        </div>
-  );
-}
+    return (
+      
+      <div>
+        <Header title="Aluguel do SENAI" sections={sections} />
+           <Card  style={{ width: '20rem'}} >       
+        {
+          carros.map(carros => (
+            <CardActionArea>
+            <CardMedia
+              className={classes.media}
+              image={image}
+              title="Contemplative Reptile"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+               {carros.marca} {carros.modelo}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                Cor: {carros.cor} <br></br>Quantidade de lugares: {carros.qtdlugares} <br></br>Ano: {carros.ano}
+              </Typography>
+    
+            <CardActions>
+              <Button size="small" color="primary" href="/Login">
+                Alugar
+              </Button>
+              <Button size="small" color="primary" href="/teste.jpg">
+                Saiba mais
+              </Button>
+            </CardActions>
+            </CardContent>
+          </CardActionArea>
+          ))
+        }
+          </Card> 
+          <Footer title="Aluguel do SENAI" description="" />
+          </div>
+    );
+  }
 
 
 export default Carro;
+
