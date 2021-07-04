@@ -16,8 +16,11 @@ import Container from '@material-ui/core/Container';
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
+      {'Rua São Paulo, 1.147 - Victor Konder, Blumenau - SC'} <br/>
+      {'jefmaylon@gmail.com' } <br/>
+      {'kadovargas@gmail.com'} <br/>
+      {''} <br/>
+      <Link color="inherit" href="#">
         Alugue um carro
       </Link>{' '}
       {new Date().getFullYear()}
@@ -49,6 +52,32 @@ const useStyles = makeStyles((theme) => ({
 export default function SignUp() {
   const classes = useStyles();
 
+    const [Nome, setNome] = useState('');
+    const [Email, setEmail] = useState('');
+    const [Senha, setSenha] = useState('');
+    const [Telefone, setTelefone] = useState('');
+
+    async function handleCadastro(e) {
+      e.preventDefault();
+
+      const dados = {
+          Nome,
+          Email,
+          Senha,
+          Telefone,
+      };
+
+      try {
+          console.log(dados);
+          const response = await api.post('user', dados);
+          const id = response.data.id;
+          console.log(response.data);
+          alert("Usuário cadastrado com sucesso!");
+          // history.push('/');
+      } catch (error) {
+          alert("Erro ao cadastrar Usuario " + error.message);            
+      }
+  }
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -59,7 +88,7 @@ export default function SignUp() {
           Cadastro
         </Typography>
 
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={handleCadastro}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
@@ -71,18 +100,9 @@ export default function SignUp() {
                 id="firstName"
                 label="Nome completo"
                 autoFocus
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="telefone"
-                label="Telefone"
-                name="telefone"
-                autoComplete="telefone"
-              />
+                value={Nome}
+                onChange={e => setNome(e.target.value)}
+                />
             </Grid>
             <Grid item xs={12}>
               <TextField
@@ -93,6 +113,8 @@ export default function SignUp() {
                 label="Email"
                 name="email"
                 autoComplete="email"
+                value={Email}
+                onChange={e => setEmail(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -105,6 +127,21 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                value={Senha}
+                onChange={e => setSenha(e.target.value)}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="telefone"
+                label="Telefone"
+                name="telefone"
+                autoComplete="telefone"
+                value={Telefone}
+                onChange={e => setTelefone(e.target.value)}
               />
             </Grid>
           </Grid>

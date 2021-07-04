@@ -6,9 +6,7 @@ import ListaLivro from './paginas/Teste/ListaLivro';
 import carros from './paginas/Teste/Carro/index';
 import Usuario from './paginas/Teste/Usuario/index';
 import Login from './paginas/Teste/Login/index';
-
-
-
+import Faq from './paginas/Teste/Faq/index';
 
 function routes () {
     return (
@@ -20,6 +18,7 @@ function routes () {
             <Route path="/ListaLivro" component={ListaLivro}/>
             <Route path="/Usuario" component={Usuario}/>
             <Route path="/Login" component={Login}/>
+            <Route path="/Faq" component={Faq}/>
         </Switch>
         </BrowserRouter>
     )

@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import HelloMessage from './HelloMessage';
 import Teste from './paginas/Teste';
 import Routes from './routes';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
    <Routes/>,

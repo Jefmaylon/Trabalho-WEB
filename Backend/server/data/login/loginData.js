@@ -1,6 +1,10 @@
-const database = require('../../database/database');
+const database = require("../../database/database");
+var md5 = require('md5');
 
-exports.getLogin = function (usuario, senha) {
-    console.log(usuario, senha);
-    return database.query('select * from usuario where "nome" = $1 and "senha" = $2', [usuario, senha]);
+exports.getLogin = () => {
+    return database.query('select * from usuario');
+}
+
+exports.saveLogin = (usuario) => {
+    return database.query('select * from usuario where Email = $1 and Senha = $2', [usuario.Email, md5(usuario.Senha)]);
 }

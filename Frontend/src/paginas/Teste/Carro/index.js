@@ -12,7 +12,31 @@ import teste from './teste.png';
 import { createBrowserHistory } from 'history';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
+import { styled } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
+import Link from '@material-ui/core/Link';
+import { setConfiguration } from 'react-grid-system';
 
+
+
+setConfiguration({ maxScreenClass: 'xl' });
+
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Rua São Paulo, 1.147 - Victor Konder, Blumenau - SC'} <br/>
+      {'jefmaylon@gmail.com' } <br/>
+      {'kadovargas@gmail.com'} <br/>
+      {''} <br/>
+      <Link color="inherit" href="#">
+        Alugue um carro
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
 
 const useStyles = makeStyles({
   root: {
@@ -21,11 +45,20 @@ const useStyles = makeStyles({
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9,
-    marginTop:'30'
+    marginTop:'30',
+    
   }
     });
 
+    const Item = styled(Paper)(({ theme }) => ({
+      ...theme.typography.body2,
+      padding: theme.spacing(1),
+      textAlign: 'center',
+      color: theme.palette.text.secondary,
+    }));
+
   function Carro() {
+
   const classes = useStyles();
   const [carros, setCarros] = useState([]);
 
@@ -34,54 +67,45 @@ const useStyles = makeStyles({
             setCarros(response.data);
         });
     }, []);
-    
+
+
   return (
-    <React.Fragment>
-      <Grid item xs={4}>
-        <Grid container spacing={1}>
-           <Grid container item xs={12} spacing={3}>
-              <Card className={classes.root}>
-              
-         
-    {
-      
-      carros.map(carros => (
-        <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={teste}
-          title="Contemplative Reptile"
-        />
-        
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-           {carros.marca} {carros.modelo}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Cor: {carros.cor} <br></br>Quantidade de lugares: {carros.qtdlugares} <br></br>Ano: {carros.ano}
-          </Typography>
 
-        <CardActions>
-          <Button size="small" color="primary" href="/Usuario">
-            Alugar
-          </Button>
-          <Button size="small" color="primary" href="/teste.jpg">
-            Saiba mais
-          </Button>
-        </CardActions>
-
-        </CardContent>
-      </CardActionArea>
-
-      ))
-      
-  }
-            </Card>
-        </Grid>
-      </Grid>
-     </Grid>
-  </React.Fragment>
+    <div>
+         <Card  style={{ width: '11rem'}} >       
+      {
+        carros.map(carros => (
+          <CardActionArea>
+          <CardMedia
+            className={classes.media}
+            image={teste}
+            title="Contemplative Reptile"
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
+             {carros.marca} {carros.modelo}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              Cor: {carros.cor} <br></br>Quantidade de lugares: {carros.qtdlugares} <br></br>Ano: {carros.ano}
+            </Typography>
+  
+          <CardActions>
+            <Button size="small" color="primary" href="/Login">
+              Alugar
+            </Button>
+            <Button size="small" color="primary" href="/teste.jpg">
+              Saiba mais
+            </Button>
+          </CardActions>
+          </CardContent>
+        </CardActionArea>
+        ))
+      }
+      <Copyright />
+        </Card> 
+        </div>
   );
 }
+
 
 export default Carro;

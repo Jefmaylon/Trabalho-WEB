@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import api from '../services/api';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -8,17 +9,21 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import  { Redirect } from 'react-router-dom'
+
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
+      {'Rua São Paulo, 1.147 - Victor Konder, Blumenau - SC'} <br/>
+      {'jefmaylon@gmail.com' } <br/>
+      {'kadovargas@gmail.com'} <br/>
+      {''} <br/>
       <Link color="inherit" href="https://material-ui.com/">
-        Site
+        Alugue um carro
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -48,6 +53,25 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
   const classes = useStyles();
+  const [Email, getEmail] = useState('');
+  const [Senha, getSenha] = useState('');
+
+    async function handleLogin(e) {
+        e.preventDefault();
+
+        const dados = {
+            Email,
+            Senha
+        };
+
+        try {
+          const response = await api.post('login', dados);
+          alert("Login valido! Status: " + response.status);
+          window.location.href = "/Carros";
+      } catch (error) {
+          alert("Login Invalido " + error.message);
+      }
+    }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -59,7 +83,7 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Iniciar sessão
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} onSubmit={handleLogin}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -70,6 +94,8 @@ export default function SignIn() {
             name="email"
             autoComplete="email"
             autoFocus
+            value={Email}
+            onChange={e => getEmail(e.target.value)}
           />
           <TextField
             variant="outlined"
@@ -81,6 +107,8 @@ export default function SignIn() {
             type="password"
             id="password"
             autoComplete="current-password"
+            value={Senha}
+            onChange={e => getSenha(e.target.value)}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
