@@ -1,24 +1,23 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import HelloMessage from './HelloMessage';
-import Teste from './paginas/Teste';
-import ListaLivro from './paginas/Teste/ListaLivro';
-import carros from './paginas/Teste/Carro/index';
-import Usuario from './paginas/Teste/Usuario/index';
-import Login from './paginas/Teste/Login/index';
-import Blog from './paginas/Teste/Blog/Blog';
+import Carros from './paginas/Carro/index';
+import Usuario from './paginas/Usuario/index';
+import Login from './paginas/Login/index';
+import Blog from './paginas/Blog/Blog';
+import Faq from './paginas/Faq/Faq';
+import Sobre from './paginas/Sobre/sobre';
 
 function routes () {
     return (
         <BrowserRouter>
         <Switch>
-            <Route path="/" exact={true} component={HelloMessage}/>
-            <Route path="/Teste" component={Teste}/>
-            <Route path="/carros" component={carros}/>
-            <Route path="/ListaLivro" component={ListaLivro}/>
+            <Route path="/" exact={true} component={Blog}/>
+            <Route path="/Carros" component={Carros}/>
             <Route path="/Usuario" component={Usuario}/>
             <Route path="/Login" component={Login}/>
             <Route path="/Blog" component={Blog}/>
+            <Route path="/Faq" component={Faq}/>
+            <Route path="/Sobre" component={Sobre}/>
         </Switch>
         </BrowserRouter>
     )

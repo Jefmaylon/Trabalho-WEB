@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import HelloMessage from './HelloMessage';
-import Teste from './paginas/Teste';
 import Routes from './routes';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
