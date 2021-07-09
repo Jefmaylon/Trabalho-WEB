@@ -6,5 +6,6 @@ exports.getLogin = () => {
 }
 
 exports.saveLogin = (usuario) => {
-    return database.query('select * from usuario where Email = $1 and Senha = $2', [usuario.Email, md5(usuario.Senha)]);
+    console.log(usuario.Email, md5(usuario.Senha));
+    return database.query('select * from usuario where email = $1 and senha = $2', [usuario.Email, md5(usuario.Senha)]);
 }

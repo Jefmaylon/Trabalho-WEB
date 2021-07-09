@@ -5,7 +5,6 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import FacebookIcon from '@material-ui/icons/Facebook';
-import TwitterIcon from '@material-ui/icons/Twitter';
 import Header from './Header';
 import MainFeaturedPost from './MainFeaturedPost';
 import FeaturedPost from './FeaturedPost';
@@ -23,16 +22,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const sections = [
-  { title: 'Carros', url: '/carros' },
+  { title: 'Alugue seu carro', url: '/carros' },
+  { title: 'Cadastrar carro', url: '/Cadastro' },
   { title: 'Sobre', url: '/Sobre' },
   { title: 'FAQ', url: '/Faq' },
+  
 
 ];
 
 const mainFeaturedPost = {
   title: 'A maior plataforma de aluguel da América Latina',
   description:
-    "Alugue o seu carro sem sair do conforto da sua casa, deixa que nós fizemos isso para você.",
+    "Alugue o seu carro sem sair do conforto da sua casa, deixe que nós fizemos isso para você.",
   image: 'https://wallpapercave.com/wp/wp2430837.jpg',
   imgText: 'Porsche',
   //linkText: 'Continue reading…',
@@ -80,7 +81,7 @@ export default function Blog() {
     <React.Fragment>
       <CssBaseline />
       <Container maxWidth="lg">
-        <Header title="SENAI rent a car" sections={sections} />
+        <Header title="SENAI-RENT-A-CAR" sections={sections} />
         <main>
           <MainFeaturedPost post={mainFeaturedPost} />
           <Grid container spacing={4}>
@@ -99,7 +100,7 @@ export default function Blog() {
           </Grid>
         </main>
       </Container>
-      <Footer title="SENAI rent a car" description="" />
+      <Footer title="SENAI-RENT-A-CAR" description="" />
     </React.Fragment>
   );
 }

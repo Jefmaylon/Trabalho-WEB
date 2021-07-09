@@ -15,7 +15,7 @@ function Copyright() {
         {'kadovargas@gmail.com'} <br/>
         {'divino07rafa@gmail.com'} <br/>
         <Link color="inherit" href="/Blog">
-          SENAI rent a car
+          SENAI-RENT-A-CAR
         </Link>{' '}
         {new Date().getFullYear()}
         {'.'}
@@ -51,7 +51,7 @@ export default function StickyFooter() {
 
   return (
     <div className={classes.root}>
-        <Header title="SENAI rent a car" sections={sections} />
+        <Header title="SENAI-RENT-A-CAR" sections={sections} />
       <CssBaseline />
       <Container component="main" className={classes.main} >
         <Typography variant="h3" component="h1" gutterBottom>

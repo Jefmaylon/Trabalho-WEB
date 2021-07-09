@@ -4,14 +4,13 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+
 
 function Copyright() {
   return (
@@ -21,7 +20,7 @@ function Copyright() {
       {'kadovargas@gmail.com'} <br/>
       {'divino07rafa@gmail.com'} <br/>
       <Link color="inherit" href="#">
-        SENAI-RENT-A-CAR
+        SENAI rent a car
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -52,57 +51,63 @@ const useStyles = makeStyles((theme) => ({
 export default function SignUp() {
   const classes = useStyles();
 
-    const [Nome, setNome] = useState('');
-    const [Email, setEmail] = useState('');
-    const [Senha, setSenha] = useState('');
-    const [Telefone, setTelefone] = useState('');
+    const [Marca, setMarca] = useState('');
+    const [Modelo, setModelo] = useState('');
+    const [Ano, setAno] = useState('');
+    const [Qtdlugares, setQtdlugares] = useState('');
+    const [Cor, setCor] = useState('');
+    const [Imagem, setImagem] = useState('');
 
     async function handleCadastro(e) {
       e.preventDefault();
 
       const dados = {
-          Nome,
-          Email,
-          Senha,
-          Telefone,
+          Marca,
+          Modelo,
+          Ano,
+          Qtdlugares,
+          Cor,
+          Imagem,
       };
 
       try {
           console.log(dados);
-          const response = await api.post('user', dados);
+          const response = await api.post('carros', dados);
           const id = response.data.id;
           console.log(response.data);
-          alert("Usuário cadastrado com sucesso!");
-          window.location.href = "/Login";
+          alert("Carro cadastrado com sucesso!");
+          window.location.href = "/carros";
           // history.push('/');
       } catch (error) {
-          alert("Erro ao cadastrar Usuario " + error.message);            
+          alert("Erro ao cadastrar Carro " + error.message);            
       }
   }
+
+
   return (
+    
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-        </Avatar>
+        <Avatar alt="Remy Sharp" src="https://img2.gratispng.com/20180427/olq/kisspng-sports-car-silhouette-car-profile-5ae39be400a062.1059544615248660200026.jpg" />
         <Typography component="h1" variant="h5">
-          Cadastro
+          Cadastro de carro
         </Typography>
 
         <form className={classes.form} onSubmit={handleCadastro}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
-                autoComplete="fname"
-                name="firstName"
+                autoComplete="Marca"
+                name="Marca"
                 variant="outlined"
                 required
                 fullWidth
-                id="firstName"
-                label="Nome completo"
+                id="Marca"
+                label="Marca"
                 autoFocus
-                value={Nome}
-                onChange={e => setNome(e.target.value)}
+                value={Marca}
+                onChange={e => setMarca(e.target.value)}
                 />
             </Grid>
             <Grid item xs={12}>
@@ -110,12 +115,12 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
-                id="email"
-                label="Email"
-                name="email"
-                autoComplete="email"
-                value={Email}
-                onChange={e => setEmail(e.target.value)}
+                id="Modelo"
+                label="Modelo"
+                name="Modelo"
+                autoComplete="Modelo"
+                value={Modelo}
+                onChange={e => setModelo(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -123,13 +128,11 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
-                name="password"
-                label="Senha"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                value={Senha}
-                onChange={e => setSenha(e.target.value)}
+                name="Ano"
+                label="Ano"
+                id="Ano"
+                value={Ano}
+                onChange={e => setAno(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -137,12 +140,38 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
-                id="telefone"
-                label="Telefone"
-                name="telefone"
-                autoComplete="telefone"
-                value={Telefone}
-                onChange={e => setTelefone(e.target.value)}
+                id="Quantidade de lugares"
+                label="Quantidade de lugares"
+                name="Quantidade de lugares"
+                autoComplete="Quantidade de lugares"
+                value={Qtdlugares}
+                onChange={e => setQtdlugares(e.target.value)}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="Cor"
+                label="Cor"
+                name="Cor"
+                autoComplete="Cor"
+                value={Cor}
+                onChange={e => setCor(e.target.value)}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="Imagem"
+                label="Imagem"
+                name="Imagem"
+                autoComplete="Imagem"
+                value={Imagem}
+                onChange={e => setImagem(e.target.value)}
               />
             </Grid>
           </Grid>
@@ -153,15 +182,8 @@ export default function SignUp() {
             color="primary"
             className={classes.submit}
           >
-            Cadastrar-se
+            Cadastrar carro
           </Button>
-          <Grid container justify="flex-end">
-            <Grid item>
-              <Link href="/login" variant="body2">
-                Já tem uma conta? Entre
-              </Link>
-            </Grid>
-          </Grid>
         </form>
       </div>
       <Box mt={5}>

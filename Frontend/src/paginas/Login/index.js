@@ -77,7 +77,6 @@ export default function SignInSide() {
 
         try {
           const response = await api.post('login', dados);
-          alert("Login valido! Status: " + response.status);
           window.location.href = "/Blog";
       } catch (error) {
           alert("Login Invalido " + error.message);

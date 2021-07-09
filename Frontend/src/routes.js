@@ -6,6 +6,8 @@ import Login from './paginas/Login/index';
 import Blog from './paginas/Blog/Blog';
 import Faq from './paginas/Faq/Faq';
 import Sobre from './paginas/Sobre/sobre';
+import Cadastro from './paginas/Cadastro/index';
+
 
 function routes () {
     return (
@@ -18,6 +20,7 @@ function routes () {
             <Route path="/Blog" component={Blog}/>
             <Route path="/Faq" component={Faq}/>
             <Route path="/Sobre" component={Sobre}/>
+            <Route path="/Cadastro" component={Cadastro}/>
         </Switch>
         </BrowserRouter>
     )

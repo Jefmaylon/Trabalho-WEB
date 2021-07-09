@@ -14,7 +14,6 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
-import image from './foto.png';
 
 function Copyright() {
   return (
@@ -24,7 +23,7 @@ function Copyright() {
       {'kadovargas@gmail.com'} <br/>
       {'divino07rafa@gmail.com'} <br/>
       <Link color="inherit" href="/Blog">
-        SENAI rent a car
+        SENAI-RENT-A-CAR
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -51,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
+    backgroundColor: '#A9A9A9',
   },
   cardMedia: {
     paddingTop: '56.25%', // 16:9
@@ -79,6 +79,7 @@ export default function Carro() {
     }, []);
 
   return (
+    
     <React.Fragment>
       <CssBaseline />
       <AppBar position="relative">
@@ -88,19 +89,19 @@ export default function Carro() {
           Início
           </Button>
         </Toolbar>
-        
       </AppBar>
       <main>
-        <Container className={classes.cardGrid} maxWidth="md">
+        <Container className={classes.cardGrid} maxWidth="md" >
           {/* End hero unit */}
+
           <Grid container spacing={4}>
             {carros.map((carros, card) => (
               <Grid item key={card} xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
+                <Card className={classes.card} >
                   <CardMedia
                     className={classes.cardMedia}
-                    image={image}
-                    title="Image title"
+                    image={carros.imagem}
+                    title="Carro"
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
@@ -122,12 +123,12 @@ export default function Carro() {
               </Grid>
             ))}
           </Grid>
-        </Container>
+        </Container>      
       </main>
       {/* Footer */}
       <footer className={classes.footer}>
         <Typography variant="h6" align="center" gutterBottom>
-          SENAI rent a car
+          SENAI-RENT-A-CAR
         </Typography>
         <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
         </Typography>
@@ -135,5 +136,6 @@ export default function Carro() {
       </footer>
       {/* End footer */}
     </React.Fragment>
+
   );
 }

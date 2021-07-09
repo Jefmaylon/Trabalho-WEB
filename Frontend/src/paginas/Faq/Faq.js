@@ -67,14 +67,14 @@ export default function App () {
 
     return (
         <div>
-            <Header title="SENAI rent a car" sections={sections} />
+            <Header title="SENAI-RENT-A-CAR" sections={sections} />
             <Faq
                 data={data}
                 styles={styles}
                 config={config}
             />
             <Copyright />
-            <Footer title="SENAI rent a car" description="" />
+            <Footer title="SENAI-RENT-A-CAR" description="" />
         </div>
 
     );
